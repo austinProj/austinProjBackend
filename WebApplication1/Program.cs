@@ -4,7 +4,6 @@ using Newtonsoft.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 //JSON Serializer to detault data view to JSON
 builder.Services.AddControllersWithViews().AddNewtonsoftJson(options =>
