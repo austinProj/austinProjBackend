@@ -31,7 +31,7 @@ namespace WebApplication1.Controllers
             try
             {
                 //Opens a new sql connection
-                using var connection = new SqlConnection(_config.GetConnectionString("EmployeeAppCon"));
+                using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
 
                 var departments = await connection.QueryAsync<Department>("select * from Department");
 
@@ -53,7 +53,7 @@ namespace WebApplication1.Controllers
             try
             {
                 //Opens a new sql connection
-                using var connection = new SqlConnection(_config.GetConnectionString("EmployeeAppCon"));
+                using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
 
                 var departments = await connection.QueryAsync<Department>("select * from Department where DepartmentId = @DepartmentId", 
                     new { DepartmentId = department_Id });
@@ -78,7 +78,7 @@ namespace WebApplication1.Controllers
             try
             {
                 //Opens a new sql connection
-                using var connection = new SqlConnection(_config.GetConnectionString("EmployeeAppCon"));
+                using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
 
                 await connection.ExecuteAsync("insert into Department (DepartmentName) values (@DepartmentName)", department);
             }
@@ -101,7 +101,7 @@ namespace WebApplication1.Controllers
             try
             {
                 //Opens a new sql connection
-                using var connection = new SqlConnection(_config.GetConnectionString("EmployeeAppCon"));
+                using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
 
                 await connection.ExecuteAsync("update Department set DepartmentName = @DepartmentName where DepartmentId = @DepartmentId", department);
             }
@@ -123,7 +123,7 @@ namespace WebApplication1.Controllers
             try
             {
                 //Opens a new sql connection
-                using var connection = new SqlConnection(_config.GetConnectionString("EmployeeAppCon"));
+                using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
 
                 await connection.ExecuteAsync("delete from Department where DepartmentId = @DepartmentId", new {DepartmentId = department_Id });
             }
